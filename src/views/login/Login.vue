@@ -16,6 +16,9 @@
                 <input type="password" placeholder="请输入密码">
                 <span class="icon icon-pwd"></span>
             </div>
+            <div class="form-list">
+                <input type="button" class="btn" value="登陆">
+            </div>
         </div>
       </div>
   </div>
@@ -74,7 +77,7 @@ export default {
       }
       .user-img {
         text-align: center;
-        padding: 20px;
+        padding: 10px;
       }
       .form-list {
         padding: 20px 136px;
@@ -95,6 +98,13 @@ export default {
           left: 147px;
           top: 20px;
           font-size: 30px;
+        }
+        .btn {
+          background: #4a78c6 !important;
+          border: none !important;
+          text-align: center;
+          color: #ffffff;
+          padding-left: 0;
         }
       }
     }
