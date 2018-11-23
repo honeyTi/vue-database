@@ -59,9 +59,7 @@
           <a-breadcrumb-item>Bill</a-breadcrumb-item>
         </a-breadcrumb> -->
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px', margin: '16px 0' }">
-          <div class="line">
-            <ve-line :data="chartData" width="100%" height="100%"></ve-line>
-          </div>
+          <router-view></router-view>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -78,18 +76,7 @@ export default {
       // 消息条数提示
       info_num: "",
       // 账号名字
-      userName: "",
-      chartData: {
-        columns: ["日期", "访问用户", "下单用户", "下单率"],
-        rows: [
-          { 日期: "1/1", 访问用户: 1393, 下单用户: 1093, 下单率: 0.32 },
-          { 日期: "1/2", 访问用户: 3530, 下单用户: 3230, 下单率: 0.26 },
-          { 日期: "1/3", 访问用户: 2923, 下单用户: 2623, 下单率: 0.76 },
-          { 日期: "1/4", 访问用户: 1723, 下单用户: 1423, 下单率: 0.49 },
-          { 日期: "1/5", 访问用户: 3792, 下单用户: 3492, 下单率: 0.323 },
-          { 日期: "1/6", 访问用户: 4593, 下单用户: 4293, 下单率: 0.78 }
-        ]
-      }
+      userName: ""
     };
   },
   mounted() {

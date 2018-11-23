@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/login/Login.vue'
 import Home from './views/page/Home.vue'
+import IndexSystem from './views/page/index-map/Index-system.vue'
 
 Vue.use(Router)
 
@@ -19,7 +20,19 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: '/',
+        name: 'IndexSystem',
+        component: IndexSystem
+      },
+      {
+        path: '/IndexSystem',
+        name: 'IndexSystem',
+        component: IndexSystem
+      }
+    ]
   }
 ]
 
