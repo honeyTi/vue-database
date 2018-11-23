@@ -9,15 +9,15 @@
                 <a-avatar :size="100" icon="user"/>
             </div>
             <div class="form-list">
-                <input type="text" placeholder="请输入用户名">
+                <input type="text" placeholder="请输入用户名" v-model="userName">
                 <span class="icon icon-yonghu"></span>
             </div>
             <div class="form-list">
-                <input type="password" placeholder="请输入密码">
+                <input type="password" placeholder="请输入密码" v-model="userPwd">
                 <span class="icon icon-pwd"></span>
             </div>
             <div class="form-list">
-                <input type="button" class="btn" value="登陆">
+                <input type="button" class="btn" value="登陆" @click="loginUser">
             </div>
         </div>
       </div>
@@ -32,14 +32,12 @@ export default {
       userPwd: ""
     };
   },
-
-  components: {},
-
-  computed: {},
-
-  mounted: {},
-
-  methods: {}
+  methods: {
+    loginUser() {
+      sessionStorage.userName = this.userName;
+      this.$router.push({ path: "/home" });
+    }
+  }
 };
 </script>
 <style lang='scss' scoped>
