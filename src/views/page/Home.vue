@@ -32,36 +32,40 @@
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
         <div class="user-info fr">
-          <span style="margin-right:24px;">
+          <span style="margin-right:10px;">
             <a-badge :count="info_num"><a-avatar shape="square" style="border:1px solid #eeee" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/></a-badge>
           </span>
-          <a-dropdown :placement="bottomCenter">
-            <a-button>{{userName}}</a-button>
-            <a-menu slot="overlay">
-              <a-menu-item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
-              </a-menu-item>
-              <a-menu-item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
-              </a-menu-item>
-              <a-menu-item>
-                <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
-              </a-menu-item>
-            </a-menu>
-          </a-dropdown>
+          <span>
+            <a-dropdown style="margin-right:50px; border:none">
+              <a-button>{{userName}}</a-button>
+              <a-menu slot="overlay" style="text-align:center">
+                <a-menu-item>
+                  <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">个人中心</a>
+                </a-menu-item>
+                <a-menu-item>
+                  <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">修改</a>
+                </a-menu-item>
+                <a-menu-item>
+                  <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">注销</a>
+                </a-menu-item>
+              </a-menu>
+            </a-dropdown>
+          </span>
         </div>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
+        <!-- <a-breadcrumb style="margin: 16px 0">
           <a-breadcrumb-item>User</a-breadcrumb-item>
           <a-breadcrumb-item>Bill</a-breadcrumb-item>
-        </a-breadcrumb>
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-          Bill is a cat.
+        </a-breadcrumb> -->
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px', margin: '16px 0' }">
+          <div class="line">
+            <ve-line :data="chartData" width="100%" height="100%"></ve-line>
+          </div>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
-        Ant Design ©2018 Created by Ant UED
+        huhu tachi ©2018 Created by kanade zhang
       </a-layout-footer>
     </a-layout>
   </a-layout>
@@ -74,18 +78,27 @@ export default {
       // 消息条数提示
       info_num: "",
       // 账号名字
-      userName: ""
+      userName: "",
+      chartData: {
+        columns: ["日期", "访问用户", "下单用户", "下单率"],
+        rows: [
+          { 日期: "1/1", 访问用户: 1393, 下单用户: 1093, 下单率: 0.32 },
+          { 日期: "1/2", 访问用户: 3530, 下单用户: 3230, 下单率: 0.26 },
+          { 日期: "1/3", 访问用户: 2923, 下单用户: 2623, 下单率: 0.76 },
+          { 日期: "1/4", 访问用户: 1723, 下单用户: 1423, 下单率: 0.49 },
+          { 日期: "1/5", 访问用户: 3792, 下单用户: 3492, 下单率: 0.323 },
+          { 日期: "1/6", 访问用户: 4593, 下单用户: 4293, 下单率: 0.78 }
+        ]
+      }
     };
   },
-  beforeCreate() {
-    console.log(sessionStorage.userName);
+  mounted() {
     this.userName = sessionStorage.userName;
-    console.log(this.userName);
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 #components-layout-demo-side .logo {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
@@ -95,5 +108,9 @@ export default {
   font-size: 20px;
   text-align: center;
   color: #ffffff;
+}
+.line {
+  width: 500px;
+  height: 300px;
 }
 </style>
