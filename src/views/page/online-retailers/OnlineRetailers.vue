@@ -1,21 +1,15 @@
-<!-- echarts组件 -->
+<!-- 电商页面 -->
 <template>
-  <div></div>
+  <div>
+      电商页面
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {};
-  },
-
-  components: {},
-
-  computed: {},
-
-  mounted: {},
-
-  methods: {}
+  }
 };
 </script>
 <style lang='scss' scoped>
