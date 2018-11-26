@@ -21,10 +21,65 @@
               </span>
           </div>
       </div>
+      <div class="list-content">
+        测试文字
+      </div>
   </div>
 </template>
 
 <script>
+const columns = [
+  {
+    title: "姓名",
+    dataIndex: "name"
+  },
+  {
+    title: "价格",
+    dataIndex: "money"
+  },
+  {
+    title: "Address",
+    dataIndex: "address"
+  }
+];
+const data = [
+  {
+    key: "1",
+    name: "John Brown",
+    money: "￥300,000.00",
+    address: "New York No. 1 Lake Park"
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    money: "￥1,256,000.00",
+    address: "London No. 1 Lake Park"
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park"
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park"
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park"
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    money: "￥120,000.00",
+    address: "Sidney No. 1 Lake Park"
+  }
+];
 export default {
   data() {
     this.chartSettings = {
@@ -41,7 +96,9 @@ export default {
           { 日期: "2018-01-10", 访问用户: 3792, 下单用户: 3492, 下单率: 0.323 },
           { 日期: "2018-01-20", 访问用户: 4593, 下单用户: 4293, 下单率: 0.78 }
         ]
-      }
+      },
+      data,
+      columns
     };
   },
   methods: {
@@ -58,6 +115,9 @@ export default {
 .index-system {
   width: 100%;
   height: auto;
+  .list-content {
+    padding: 20px 0;
+  }
   .filter-map {
     width: 100%;
     padding: 16px 0;
