@@ -59,18 +59,16 @@ table {
 .clearfix {
     *zoom: 1;
 }
-input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
-    -webkit-text-fill-color: #ededed !important;
-    -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;  
-    background-color:transparent;
-    background-image: none;
-    transition: background-color 50000s ease-in-out 0s; 
-}  
-input {  
-     background-color:transparent;  
+body {
+    background-color: #ede7dc!important;
 }
 @font-face {
     font-family: adequateFont;
     src: url('./font-map/Adequate-ExtraLight.eot'),
          url('./font-map/Adequate-ExtraLight.eot');
+}
+@font-face {
+    font-family: shuimo1;
+    src: url('./font-map/fangzheng.eot'),
+         url('./font-map/fangzheng.ttf');
 }

@@ -1,66 +1,35 @@
 <template>
-  <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-    <a-layout-sider collapsible v-model="collapsed">
+  <a-layout id="components-layout-demo-fixed">
+    <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%',height: '80px'}">
       <div class="logo">
+        <img src="../../assets/images/logo.png" alt="头像" width="100%">
       </div>
-      <a-menu theme="dark" :defaultSelectedKeys="['1']" mode="inline" @click="nvaClick">
-        <a-menu-item key="/IndexSystem">
-          <a-icon type="pie-chart" />
-          <span>指标体系</span>
-        </a-menu-item>
-        <a-sub-menu key="sub1">
-          <span slot="title"><a-icon type="user" /><span>决策中心</span></span>
-          <a-menu-item key="/OnlineRetailers">网络零售</a-menu-item>
-          <a-menu-item key="在线服务">在线服务</a-menu-item>
-          <a-menu-item key="跨境电商">跨境电商</a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu key="sub2" >
-          <span slot="title"><a-icon type="team" /><span>监测中心</span></span>
-          <a-menu-item key="6">待定1</a-menu-item>
-          <a-menu-item key="8">待定2</a-menu-item>
-        </a-sub-menu>
-        <a-menu-item key="平台共享">
-          <a-icon type="file" />
-          <span>平台共享</span>
-        </a-menu-item>
+      <a-menu theme="dark" mode="horizontal" :defaultSelectedKeys="['2']" :style="{ lineHeight: '80px', background:'none', fontSize: '22px'}">
+        <a-menu-item key="1">个人主页</a-menu-item>
+        <a-menu-item key="2">百科书</a-menu-item>
+        <a-menu-item key="3">论坛</a-menu-item>
       </a-menu>
-    </a-layout-sider>
-    <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <div class="user-info fr">
-          <span style="margin-right:10px;">
-            2018-12-11
-          </span>
-          <span style="margin-right:10px;">
-            <a-badge :count="info_num"><a-avatar shape="square" style="border:1px solid #eeee" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/></a-badge>
-          </span>
-          <span>
-            <a-dropdown style="margin-right:50px; border:none">
-              <a-button>{{userName}}</a-button>
-              <a-menu slot="overlay" style="text-align:center">
-                <a-menu-item>
-                  <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">个人中心</a>
-                </a-menu-item>
-                <a-menu-item>
-                  <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">修改</a>
-                </a-menu-item>
-                <a-menu-item>
-                  <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">注销</a>
-                </a-menu-item>
-              </a-menu>
-            </a-dropdown>
-          </span>
+      <div class="login-map">
+        <!-- 未登录 -->
+        <div class="no-login">
+          <a-button @click="showModal">登录</a-button>
+          <a-button>注册</a-button>
+          <a-modal title="登录" cancelText="取消" okText="登录" width="400px" v-model="visible" @ok="handleOk">
+            <a-input size="large" placeholder="large size" />
+            <a-input size="large" placeholder="large size" />
+          </a-modal>
         </div>
-      </a-layout-header>
-      <a-layout-content style="margin: 0 16px">
-        <div :style="{ padding: '24px', background: '#fff', minHeight: '0px', margin: '16px 0' }">
-          <router-view></router-view>
-        </div>
-      </a-layout-content>
-      <a-layout-footer style="text-align: center">
-        huhu tachi ©2018 Created by kanade zhang
-      </a-layout-footer>
-    </a-layout>
+      </div>
+    </a-layout-header>
+    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
+      <div :style="{ minHeight: '380px', marginTop:'36px'}">
+        <router-view>
+        </router-view>
+      </div>
+    </a-layout-content>
+    <a-layout-footer :style="{ textAlign: 'center' }">
+      huhu ©2018 Created by kanade_zhang
+    </a-layout-footer>
   </a-layout>
 </template>
 <script>
@@ -71,34 +40,87 @@ export default {
       // 消息条数提示
       info_num: "",
       // 账号名字
-      userName: ""
+      userName: "",
+      // 模态窗口
+      visible: false
     };
-  },
-  mounted() {
-    this.userName = sessionStorage.userName;
   },
   methods: {
     // 点击nvabar切换路由，在框架上data.key
-    nvaClick(data) {
-      this.$router.push({ path: data.key });
+    // nvaClick(data) {
+    //   this.$router.push({ path: data.key });
+    // }
+    showModal() {
+      this.visible = true;
+    },
+    handleOk(e) {
+      console.log(e);
+      this.visible = false;
     }
   }
 };
 </script>
-
-<style lang="scss" scoped>
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+<style lang='scss' scoped>
+.ant-modal-footer {
+  text-align: center !important;
+  .ant-modal-body {
+    input.ant-input.ant-input-lg {
+      margin-bottom: 20px !important;
+    }
+  }
 }
-.logo {
-  font-size: 20px;
-  text-align: center;
-  color: #ffffff;
-}
-.line {
-  width: 500px;
-  height: 300px;
+#components-layout-demo-fixed {
+  .logo {
+    width: 100px;
+    float: left;
+    height: 80px;
+    line-height: 80px;
+  }
+  .ant-layout-header {
+    background: url("../../assets/images/header-bg.png") no-repeat;
+    background-size: 100% 100%;
+    box-shadow: 0 0 8px #67523b;
+  }
+  ul.ant-menu.ant-menu-horizontal.ant-menu-root.ant-menu-dark li {
+    font-family: "shuimo1";
+    font-size: 24px;
+    font-weight: bold;
+    color: #67523b;
+    padding: 0 50px;
+  }
+  .ant-menu-item-selected {
+    background: url("../../assets/images/nav-select.png") no-repeat;
+    background-size: 100% 100%;
+  }
+  .ant-layout-content,
+  .ant-layout-footer {
+    background: #ede7dc;
+  }
+  .login-map {
+    position: absolute;
+    width: 300px;
+    height: 80px;
+    // background: #ffffff;
+    right: 50px;
+    top: 0;
+    .no-login {
+      width: 100%;
+      line-height: 80px;
+      font-family: "shuimo1";
+      font-size: 24px;
+      color: #67523b;
+      button.ant-btn.ant-btn-default {
+        margin-right: 20px;
+        background: none;
+        border: 2px solid #67523b;
+        font-weight: bold;
+      }
+      .ant-btn:hover,
+      .ant-btn:focus {
+        color: #67523b;
+      }
+    }
+  }
 }
 </style>
+

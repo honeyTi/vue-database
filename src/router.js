@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from './views/login/Login.vue'
 import Home from './views/page/Home.vue'
-import IndexSystem from './views/page/index-map/Index-system.vue'
+import Center from './views/page/person-center/Center.vue'
 import OnlineRetailers from './views/page/online-retailers/OnlineRetailers.vue'
 
 Vue.use(Router)
@@ -10,13 +9,8 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
-    name: 'login',
-    component: Login
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
+    name: 'home',
+    component: Home
   },
   {
     path: '/home',
@@ -25,13 +19,13 @@ const routes = [
     children: [
       {
         path: '/',
-        name: 'IndexSystem',
-        component: IndexSystem
+        name: 'Center',
+        component: Center
       },
       {
-        path: '/IndexSystem',
-        name: 'IndexSystem',
-        component: IndexSystem
+        path: '/Center',
+        name: 'Center',
+        component: Center
       },
       {
         path: '/OnlineRetailers',
@@ -48,16 +42,16 @@ const router = new Router({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.path === '/login') {
-    next();
-  } else {
-    if (sessionStorage.userName) {
-      next()
-    } else {
-      next({ path: '/login' })
-    }
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.path === '/login') {
+//     next();
+//   } else {
+//     if (sessionStorage.userName) {
+//       next()
+//     } else {
+//       next({ path: '/login' })
+//     }
+//   }
+// })
 
 export default router
