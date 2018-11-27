@@ -1,8 +1,6 @@
-<!-- 电商页面 -->
+<!--  -->
 <template>
-  <div>
-      电商页面
-  </div>
+  <div></div>
 </template>
 
 <script>

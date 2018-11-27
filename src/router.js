@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/page/Home.vue'
 import Center from './views/page/person-center/Center.vue'
-import OnlineRetailers from './views/page/online-retailers/OnlineRetailers.vue'
+import Baike from './views/page/baike/Baike.vue'
+import Tribune from './views/page/tribune/Tribune'
 
 Vue.use(Router)
 
@@ -28,9 +29,14 @@ const routes = [
         component: Center
       },
       {
-        path: '/OnlineRetailers',
-        name: 'OnlineRetailers',
-        component: OnlineRetailers
+        path: '/Baike',
+        name: 'Baike',
+        component: Baike
+      },
+      {
+        path: '/Tribune',
+        name: 'Tribune',
+        component: Tribune
       }
     ]
   }

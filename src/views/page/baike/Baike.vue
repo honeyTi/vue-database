@@ -1,7 +1,7 @@
-<!-- 指标体系 -->
+<!-- 百科书籍页面 -->
 <template>
-  <div class="person-center">
-    这个是center页面
+  <div>
+      百科页面
   </div>
 </template>
 

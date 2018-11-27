@@ -72,3 +72,12 @@ body {
     src: url('./font-map/fangzheng.eot'),
          url('./font-map/fangzheng.ttf');
 }
+.ant-modal-body input{
+    margin-bottom: 20px!important;
+}
+#login-dropMenu{
+    background: #EDE7DC;
+    box-shadow: 0 0 8px #67523B;
+    font-family: 'shuimo1';
+    text-align: center;
+}

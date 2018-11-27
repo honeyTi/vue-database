@@ -1,7 +1,7 @@
-<!-- 指标体系 -->
+<!-- 论坛页面 -->
 <template>
-  <div class="person-center">
-    这个是center页面
+  <div>
+    论坛页面
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data() {
     return {};
-  }
+  },
 };
 </script>
 <style lang='scss' scoped>
