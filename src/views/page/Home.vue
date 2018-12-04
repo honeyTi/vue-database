@@ -1,10 +1,16 @@
 <template>
-<a-layout id="components-layout-demo-fixed">
+  <a-layout id="components-layout-demo-fixed">
     <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%',height: '80px'}">
       <div class="logo">
         <img src="../../assets/images/logo.png" alt="头像" width="100%">
       </div>
-      <a-menu theme="dark" mode="horizontal" :defaultSelectedKeys="['2']" :style="{ lineHeight: '80px', background:'none', fontSize: '22px'}" @click="nvaClick">
+      <a-menu
+        theme="dark"
+        mode="horizontal"
+        :defaultSelectedKeys="['2']"
+        :style="{ lineHeight: '80px', background:'none', fontSize: '22px'}"
+        @click="nvaClick"
+      >
         <a-menu-item key="/Center">个人主页</a-menu-item>
         <a-menu-item key="/Baike">百科书</a-menu-item>
         <a-menu-item key="/Tribune">论坛</a-menu-item>
@@ -14,17 +20,25 @@
         <div class="no-login" v-if="!user_info">
           <a-button @click="showModal">登录</a-button>
           <a-button>注册</a-button>
-          <a-modal title="登录" cancelText="取消" okText="登录" width="400px" v-model="visible" @ok="handleOk" id="login-map">
+          <a-modal
+            title="登录"
+            cancelText="取消"
+            okText="登录"
+            width="400px"
+            v-model="visible"
+            @ok="handleOk"
+            id="login-map"
+          >
             <a-input size="large" placeholder="large size" v-model="userName" type="text"/>
             <a-input size="large" placeholder="large size" v-model="userPwd" type="password"/>
           </a-modal>
         </div>
         <div class="logining" v-if="user_info">
-          <a-avatar :size="48" icon="user" />
+          <a-avatar :size="48" icon="user"/>
           <span>
             <a-dropdown>
               <a-button>{{userName}}</a-button>
-              <a-menu slot="overlay"  id="login-dropMenu">
+              <a-menu slot="overlay" id="login-dropMenu">
                 <a-menu-item>
                   <a>个人资料修改</a>
                 </a-menu-item>
@@ -43,13 +57,10 @@
     </a-layout-header>
     <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
       <div :style="{ minHeight: '380px', marginTop:'36px'}">
-        <router-view>
-        </router-view>
+        <router-view></router-view>
       </div>
     </a-layout-content>
-    <a-layout-footer :style="{ textAlign: 'center' }">
-      huhu ©2018 Created by kanade_zhang
-    </a-layout-footer>
+    <a-layout-footer :style="{ textAlign: 'center' }">huhu ©2018 Created by kanade_zhang</a-layout-footer>
   </a-layout>
 </template>
 <script>
@@ -108,15 +119,14 @@ export default {
     line-height: 80px;
   }
   .ant-layout-header {
-    background: url("../../assets/images/header-bg.png") no-repeat;
-    background-size: 100% 100%;
-    box-shadow: 0 0 8px #67523b;
+    background: #eff4f5;
+    box-shadow: 0 0 8px #999999;
   }
   ul.ant-menu.ant-menu-horizontal.ant-menu-root.ant-menu-dark li {
     font-family: "shuimo1";
     font-size: 24px;
     font-weight: bold;
-    color: #67523b;
+    color: #333;
     padding: 0 50px;
   }
   .ant-menu-item-selected {
@@ -125,7 +135,7 @@ export default {
   }
   .ant-layout-content,
   .ant-layout-footer {
-    background: #ede7dc;
+    background: #f6f6f6;
   }
   .login-map {
     position: absolute;
@@ -139,16 +149,16 @@ export default {
       line-height: 80px;
       font-family: "shuimo1";
       font-size: 24px;
-      color: #67523b;
+      color: #333;
       button.ant-btn.ant-btn-default {
         margin-right: 20px;
         background: none;
-        border: 2px solid #67523b;
+        border: 2px solid #333;
         font-weight: bold;
       }
       .ant-btn:hover,
       .ant-btn:focus {
-        color: #67523b;
+        color: #333;
       }
     }
     .logining {
@@ -156,7 +166,7 @@ export default {
       line-height: 80px;
       font-family: "shuimo1";
       font-size: 24px;
-      color: #67523b;
+      color: #333;
       span {
         margin-left: 15px;
         .ant-btn {
