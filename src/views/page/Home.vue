@@ -56,7 +56,7 @@
       </div>
     </a-layout-header>
     <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
-      <div :style="{ minHeight: '380px', marginTop:'36px'}">
+      <div :style="{ minHeight: '380px', marginTop:'50px'}">
         <router-view></router-view>
       </div>
     </a-layout-content>
@@ -88,14 +88,13 @@ export default {
     showModal() {
       this.visible = true;
     },
-    handleOk(e) {
+    handleOk() {
       this.visible = false;
       this.user_info = true;
       sessionStorage.userName = this.userName;
     },
     getSysDate() {
       let time = new Date();
-      console.log(time);
       let Y = time.getFullYear() + "-";
       let M =
         (time.getMonth() + 1 < 10
@@ -119,7 +118,7 @@ export default {
     line-height: 80px;
   }
   .ant-layout-header {
-    background: #eff4f5;
+    background: #f3f4f8;
     box-shadow: 0 0 8px #999999;
   }
   ul.ant-menu.ant-menu-horizontal.ant-menu-root.ant-menu-dark li {
@@ -135,7 +134,7 @@ export default {
   }
   .ant-layout-content,
   .ant-layout-footer {
-    background: #f6f6f6;
+    background: #f1f1f1;
   }
   .login-map {
     position: absolute;
