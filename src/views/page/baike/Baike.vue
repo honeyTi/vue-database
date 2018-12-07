@@ -35,7 +35,7 @@
           style="width: 240px;float:left; position:relative"
           v-for="(item, index) in book_page"
           :key="index"
-          @click="listClick(item.book_name, item.book_author, item.book_desc)"
+          @click="listClick(item.book_name, item.book_author, item.book_desc, item.book_key)"
         >
           <img alt="example" src="../../../assets/images/history_book.png" slot="cover">
           <a-card-meta :title="item.book_name">
@@ -76,13 +76,20 @@ export default {
     };
   },
   methods: {
-    listClick(a, b, c) {
-      console.log(a);
-      console.log(b);
-      console.log(c);
+    listClick(bookName, author, desc, key) {
+      console.log(key)
+      console.log("----------------")
+      this.$router.push({
+        name: "Bookdesc",
+        params: {
+          bookName: bookName,
+          bookAuthor: author,
+          bookDesc: desc,
+          bookKey: key
+        }
+      });
     },
     pagePost(e) {
-      console.log(e);
       this.book_page = [];
       for (
         let i = (e - 1) * this.pageSize;

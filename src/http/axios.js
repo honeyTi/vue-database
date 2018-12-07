@@ -2,8 +2,7 @@ import axios from 'axios'
 
 //创建axios实例
 var service = axios.create({
-  baseURL: "http://localhost:8090",
-  timeout: 5000
+  baseURL: "http://localhost:8090"
 })
 
 //添加请求拦截器
@@ -15,13 +14,6 @@ var service = axios.create({
 //   return Promise.reject(error)
 // })
 //添加响应拦截器
-service.interceptors.response.use(function (response) {
-  console.log('执行到响应拦截器')
-  return response
-}, function (error) {
-  console.log('err' + error)
-  return Promise.reject(error)
-})
 
 export default {
   //get请求

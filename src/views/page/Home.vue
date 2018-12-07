@@ -1,6 +1,6 @@
 <template>
   <a-layout id="components-layout-demo-fixed">
-    <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%',height: '80px'}">
+    <a-layout-header :style="{ position: 'fixed', zIndex: 150, width: '100%',height: '80px'}">
       <div class="logo">
         <img src="../../assets/images/logo.png" alt="头像" width="100%">
       </div>
