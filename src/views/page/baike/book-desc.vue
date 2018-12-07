@@ -123,6 +123,10 @@ export default {
         text-overflow: ellipsis;
         white-space: nowrap;
         cursor: pointer;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        padding: 0 20px;
       }
       span:hover {
         background: #f1f1f1;
