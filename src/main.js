@@ -8,12 +8,14 @@ import axios from './http/axios.js'
 import VCharts from 'v-charts'
 import router from './router'
 import store from './store'
+import _ from 'lodash'
 
 Vue.config.productionTip = false
 
 Vue.use(Antd)
 Vue.use(VCharts)
 Vue.prototype.$api = axios;
+Vue.prototype._ = _
 
 new Vue({
   router,

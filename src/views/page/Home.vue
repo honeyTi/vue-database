@@ -7,7 +7,7 @@
       <a-menu
         theme="dark"
         mode="horizontal"
-        :defaultSelectedKeys="['2']"
+        :defaultSelectedKeys="menu_select"
         :style="{ lineHeight: '80px', background:'none', fontSize: '22px'}"
         @click="nvaClick"
       >
@@ -77,7 +77,9 @@ export default {
       // 登录成功以后显示用户信息状态
       user_info: false,
       // 系统时间
-      sysDate: ""
+      sysDate: "",
+      // 选中菜单
+      menu_select: []
     };
   },
   methods: {
@@ -104,8 +106,12 @@ export default {
       this.sysDate = Y + M + D;
     }
   },
+  // watch() {
+  //   this.menu_select = this.$route.path;
+  // },
   mounted() {
     this.getSysDate();
+    this.menu_select.push(this.$route.path);
   }
 };
 </script>

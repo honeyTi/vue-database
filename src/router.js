@@ -4,6 +4,8 @@ import Home from './views/page/Home.vue'
 import Center from './views/page/person-center/Center.vue'
 import Baike from './views/page/baike/Baike.vue'
 import Tribune from './views/page/tribune/Tribune'
+// 单书籍描述页面
+import Bookdesc from './views/page/baike/book-desc.vue'
 
 Vue.use(Router)
 
@@ -32,6 +34,11 @@ const routes = [
         path: '/Baike',
         name: 'Baike',
         component: Baike
+      },
+      {
+        path: '/Bookdesc',
+        name: 'Bookdesc',
+        component: Bookdesc
       },
       {
         path: '/Tribune',

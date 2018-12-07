@@ -66,7 +66,7 @@ export default {
       // 翻页选中页码
       current: 1,
       //总记录数
-      rankAll: "",
+      rankAll: undefined,
       // 全部书籍
       book_data_all: "",
       // 单页书籍数据
@@ -94,6 +94,7 @@ export default {
       console.log(this.book_page);
     },
     menu_click() {
+      this.current = 1;
       this.$api.get("/history_book_list25").then(res => {
         this.rankAll = res.data.result.length;
         this.book_data_all = res.data.result;
