@@ -1,19 +1,30 @@
 <!-- 书籍详情页面 -->
 <template>
-  <div class="book-desc">
-    <h1 class="book-title">
-      {{bookName}}
-      <span class="author">作者---{{bookAuthor}}</span>
-    </h1>
-    <div class="book-desc-content">
-      <h3>内容简介</h3>
-      <div>{{bookDesc}}</div>
-    </div>
-    <div class="book-index-map">
-      <h3>书籍目录</h3>
-      <div class="book-index-list clearfix">
-        <span v-for="item in bookIndex" :key="item.id">{{ item.book_index }}</span>
+  <div>
+    <div class="book-desc" v-if="!showContent">
+      <h1 class="book-title">
+        {{bookName}}
+        <span class="author">作者---{{bookAuthor}}</span>
+      </h1>
+      <div class="book-desc-content">
+        <h3>内容简介</h3>
+        <div :title="bookDesc">{{bookDesc}}</div>
       </div>
+      <div class="book-index-map">
+        <h3>书籍目录</h3>
+        <div class="book-index-list clearfix">
+          <span
+            v-for="item in bookIndex"
+            :key="item.id"
+            @click="contentMap(item.book_index)"
+          >{{ item.book_index }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="book-content-bg" v-if="showContent">
+      <h4>{{content_detail_title}}</h4>
+      <div v-html="content_tetail"></div>
+      <div class="btn-map"></div>
     </div>
   </div>
 </template>
@@ -31,7 +42,13 @@ export default {
       // 书籍key键
       bookKey: "",
       // 书籍目录列表
-      bookIndex: []
+      bookIndex: [],
+      // 单章回目录名称
+      content_detail_title: "",
+      // 显示书籍内容页面状态
+      showContent: false,
+      // 书籍内容
+      content_tetail: ""
     };
   },
   methods: {
@@ -47,6 +64,16 @@ export default {
           this.bookIndex = res.data.result;
           console.log(this.bookIndex);
         });
+    },
+    contentMap(value) {
+      this.bookIndex.forEach((element, index) => {
+        console.log(index);
+        if (value === element.book_index) {
+          this.content_detail_title = value;
+          this.content_tetail = element.book_content;
+          this.showContent = true;
+        }
+      });
     }
   },
   mounted() {
@@ -55,7 +82,6 @@ export default {
     this.bookAuthor = this.$route.params.bookAuthor;
     this.bookDesc = this.$route.params.bookDesc;
     this.bookKey = this.$route.params.bookKey;
-    console.log(this.bookKey);
     this.getBookIndex();
   }
 };
@@ -132,6 +158,20 @@ export default {
         background: #f1f1f1;
       }
     }
+  }
+}
+.book-content-bg {
+  background: #ffffff;
+  font-size: 16px;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  line-height: 40px;
+  box-shadow: 0 0 8px #f1f1f1;
+  h4 {
+    font-size: 26px !important;
+    text-align: center;
+    margin-bottom: 40px;
   }
 }
 </style>
